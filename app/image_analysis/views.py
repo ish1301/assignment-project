@@ -1,13 +1,20 @@
+from rest_framework.parsers import FormParser, MultiPartParser
+from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .serializers import ImageUploadSerializer
 
 
 class ImageUploadView(APIView):
+    parser_classes = [
+        FormParser,
+        MultiPartParser,
+    ]
+
     def post(self, request):
-        serializer = ImageUploadSerializer(data=request.data)
+        serializer = ImageUploadSerializer(data=request.data["file"])
 
         if serializer.is_valid():
-            return "OK"
+            return Response({"message": "OK"})
         else:
-            return "NOT_OK"
+            return Response({"message": "NOPE", "errors": serializer.errors})
