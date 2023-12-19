@@ -5,8 +5,8 @@ services:
     image: postgres:latest
     container_name: pg_db
     environment:
-      - POSTGRES_DB=ampdb
-      - POSTGRES_USER=amp
+      - POSTGRES_DB=appdb
+      - POSTGRES_USER=appuser
       - POSTGRES_PASSWORD=postgres
     volumes:
       - postgres_data:/var/lib/postgresql/data
