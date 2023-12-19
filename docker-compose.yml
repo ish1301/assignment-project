@@ -1,7 +1,7 @@
 version: "3.8"
 
 services:
-  pgdb:
+  db:
     image: postgres:latest
     container_name: pgdb
     environment:
@@ -13,15 +13,15 @@ services:
     ports:
       - "54320:5432"
 
-  adminer:
+  db_ui:
     image: adminer:latest
     container_name: adminer
     ports:
       - "9090:8080"
 
-  iapp:
+  app:
     build: .
-    container_name: iamp
+    container_name: app
     command: >
       sh -c "pip3 install -r requirements.txt &&
              pip3 install -r requirements-dev.txt &&
