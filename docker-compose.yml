@@ -1,9 +1,9 @@
 version: "3.8"
 
 services:
-  db:
+  pg_db:
     image: postgres:latest
-    container_name: pgdb
+    container_name: pg_db
     environment:
       - POSTGRES_DB=ampdb
       - POSTGRES_USER=amp
@@ -11,13 +11,13 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
-      - "54320:5432"
+      - "54321:5432"
 
   db_ui:
     image: adminer:latest
-    container_name: adminer
+    container_name: db_ui
     ports:
-      - "9090:8080"
+      - "8099:8080"
 
   app:
     build: .
@@ -29,6 +29,6 @@ services:
     volumes:
       - .:/usr/src/app
     ports:
-      - "8000:8000"
+      - "8888:8000"
 volumes:
   postgres_data:
