@@ -1,6 +1,6 @@
 from rest_framework.views import APIView
 
-from app.image_analysis.serializers import ImageUploadSerializer
+from .serializers import ImageUploadSerializer
 
 
 class ImageUploadView(APIView):
@@ -8,6 +8,6 @@ class ImageUploadView(APIView):
         serializer = ImageUploadSerializer(data=request.data)
 
         if serializer.is_valid():
-            return 'OK'
+            return "OK"
         else:
-            return 'NOT_OK'
+            return "NOT_OK"
