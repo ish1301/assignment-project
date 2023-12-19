@@ -76,8 +76,8 @@ REST_FRAMEWORK = {
 }
 
 SPECTACULAR_SETTINGS = {
-    "TITLE": "App Project API",
-    "DESCRIPTION": "Your project description",
+    "TITLE": "API Docs",
+    "DESCRIPTION": "API project description",
     "VERSION": "1.0.0",
     "SERVE_INCLUDE_SCHEMA": False,
 }
