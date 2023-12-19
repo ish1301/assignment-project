@@ -1,4 +1,4 @@
-FROM python:3.11.1
+FROM python:3.10
 RUN apt update
 ENV PYTHONUNBUFFERED=1
 WORKDIR /usr/src/app
