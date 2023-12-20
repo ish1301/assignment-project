@@ -1,9 +1,10 @@
 import hashlib
 
-from image_analysis.models import MAX_IMAGE_SIZE
+from image_analysis.models import MAX_IMAGE_SIZE, ImageUpload
 from image_analysis.tasks import submit_image_analysis
 from rest_framework.serializers import (
     ImageField,
+    ModelSerializer,
     Serializer,
     SerializerMethodField,
     ValidationError,
@@ -49,3 +50,9 @@ class ImageUploadSerializer(Serializer):
 
     def get_md5_hash(self, value):
         return self.md5_hash
+
+
+class ImageAnalysisSerializer(ModelSerializer):
+    class Meta:
+        model = ImageUpload
+        fields = "__all__"
