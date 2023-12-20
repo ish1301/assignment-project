@@ -28,12 +28,13 @@ def submit_image_analysis(filename, md5_hash, content):
         }
     )
 
-    # Define the request for label detection analysis
+    # Define the request object for analysis
     request = {
         "image": {"content": content},
         "features": [{"type_": vision.Feature.Type.LABEL_DETECTION}],
     }
 
+    # Automatic logs upon various failure types
     response = client.annotate_image(request)
     response_json = vision.AnnotateImageResponse.to_json(response)
 
