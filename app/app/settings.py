@@ -104,7 +104,7 @@ DATABASES = {
     }
 }
 
-CELERY_CACHE_BACKEND = "default"
+CELERY_BROKER_URL = config("CACHE_ENDPOINT")
 
 CACHES = {
     "default": {

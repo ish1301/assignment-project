@@ -6,7 +6,7 @@ from rest_framework.serializers import (
 )
 
 from .models import MAX_IMAGE_SIZE, ImageUpload
-from .tasks import my_event_task
+from .tasks import submit_image_analysis
 
 
 class ImageUploadSerializer(Serializer):
@@ -18,12 +18,9 @@ class ImageUploadSerializer(Serializer):
                 f"File size exceeds the allowed limit ({MAX_IMAGE_SIZE} bytes)."
             )
 
+        submit_image_analysis.delay()
+
         return file
-
-    def create(self, validated_data):
-        my_event_task.delay()
-
-        return super().create(validated_data)
 
 
 class ImageAnalysisSerializer(ModelSerializer):

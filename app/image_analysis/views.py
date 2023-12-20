@@ -16,8 +16,8 @@ class ImageUploadView(APIView):
         serializer = ImageUploadSerializer(data=request.data)
 
         if serializer.is_valid():
-            uploaded_image = serializer.save()
-
-            return Response("Image submitted for analysis", status=HTTP_200_OK)
+            return Response(
+                {"message": "Image submitted for analysis"}, status=HTTP_200_OK
+            )
         else:
             return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
