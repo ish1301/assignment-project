@@ -43,7 +43,7 @@ class ImageUploadViewTestCase(TestCase):
 
     def test_image_upload_invalid_size(self):
         """
-        Test the image upload view with an invalid image.
+        Test the image upload view with an over size image.
         """
         invalid_image_path = f"{self.data_files}image_5mb.jpg"
         with open(invalid_image_path, "rb") as invalid_image_file:
@@ -56,5 +56,20 @@ class ImageUploadViewTestCase(TestCase):
         self.assertEqual(response.status_code, HTTP_400_BAD_REQUEST)
         self.assertIn(
             "File Size Exceeds The Allowed Limit",
+            response.data["image"][0].title(),
+        )
+
+    def test_image_upload_with_no_files(self):
+        """
+        Test the image upload view with empty request.
+        """
+        response = self.client.post(
+            reverse("analyze_image"),
+            format="multipart",
+        )
+
+        self.assertEqual(response.status_code, HTTP_400_BAD_REQUEST)
+        self.assertIn(
+            "No File Was Submitted",
             response.data["image"][0].title(),
         )
