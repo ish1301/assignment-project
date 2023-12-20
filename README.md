@@ -51,7 +51,7 @@ executed before merges are approved at GitHub. Although unit tests can be execut
 
 ```shell
 docker exec -it app bash
-python manage.py test
+python manage.py test app.tests
 ```
 
 ## Source Code Formatting
