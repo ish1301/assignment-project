@@ -12,7 +12,7 @@ class ImageUploadView(APIView):
     ]
 
     def post(self, request):
-        serializer = ImageUploadSerializer(data=request.data["file"])
+        serializer = ImageUploadSerializer(data=request.data)
 
         if serializer.is_valid():
             return Response({"message": "OK"})
