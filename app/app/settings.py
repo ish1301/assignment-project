@@ -103,6 +103,12 @@ DATABASES = {
     }
 }
 
+CELERY_BROKER_URL = config("CELERY_BROKER", "redis://127.0.0.1:6379/0")
+CELERY_RESULT_BACKEND = config("CELERY_BACKEND", "redis://127.0.0.1:6379/0")
+
+CELERY_TIMEZONE = "EST"
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
