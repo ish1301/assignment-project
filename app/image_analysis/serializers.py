@@ -21,7 +21,9 @@ class ImageUploadSerializer(Serializer):
             )
 
         md5hash = hashlib.md5(file.file.read())
-        submit_image_analysis.delay(filename=file.name, md5_hash=md5hash.hexdigest())
+        submit_image_analysis.delay(
+            filename=file.name, md5_hash=md5hash.hexdigest(), contents=file.file.read()
+        )
 
         return file
 
