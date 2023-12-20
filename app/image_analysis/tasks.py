@@ -17,8 +17,8 @@ def submit_image_analysis(filename, md5_hash, content):
     req = {
         "image": {"content": content},
         "features": [
-            {"type_": vision.Feature.Type.LABEL_DETECTION},
-            {"type_": vision.Feature.Type.IMAGE_PROPERTIES},
+            {"type": vision.Feature.Type.LABEL_DETECTION},
+            {"type": vision.Feature.Type.IMAGE_PROPERTIES},
         ],
     }
 
