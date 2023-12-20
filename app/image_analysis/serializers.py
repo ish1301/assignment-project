@@ -1,10 +1,14 @@
-from rest_framework.serializers import ImageField, Serializer, ValidationError
+from rest_framework.serializers import ImageField, ModelSerializer, ValidationError
 
-from .models import MAX_IMAGE_SIZE
+from .models import MAX_IMAGE_SIZE, ImageUpload
 
 
-class ImageUploadSerializer(Serializer):
+class ImageUploadSerializer(ModelSerializer):
     image = ImageField()
+
+    class Meta:
+        model = ImageUpload
+        fields = "__all__"
 
     def validate_image(self, file):
         if file.size > MAX_IMAGE_SIZE:
