@@ -1,6 +1,6 @@
 from django.db import models
 
-MAX_IMAGE_SIZE = 5 * 1024 * 1024  # 5MB
+MAX_IMAGE_SIZE = 4 * 1024 * 1024  # 4MB, Max file size for Google VISION API
 
 
 class ImageUpload(models.Model):
