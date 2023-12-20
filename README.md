@@ -59,6 +59,10 @@ docker exec -it app bash
 python manage.py test app.tests
 ```
 
+## Monitoring Celery Events
+
+Navigate to docker image on your DockerDesktop and view logs for container `celery_broker`, In AWS deployment all these logs will go to CloudWatch
+
 ## Source Code Formatting
 
 Source code formatting is part of GitHub workflow approval, but you can manually run this with below commands.
