@@ -1,3 +1,5 @@
+import hashlib
+
 from rest_framework.serializers import (
     ImageField,
     ModelSerializer,
@@ -18,7 +20,8 @@ class ImageUploadSerializer(Serializer):
                 f"File size exceeds the allowed limit ({MAX_IMAGE_SIZE} bytes)."
             )
 
-        submit_image_analysis.delay()
+        md5hash = hashlib.md5(file.file.read())
+        submit_image_analysis.delay(filename=file.name, md5_hash=md5hash.hexdigest())
 
         return file
 
