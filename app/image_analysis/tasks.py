@@ -6,7 +6,7 @@ from .models import ImageUpload
 
 
 @shared_task
-def submit_image_analysis(filename, md5_hash, contents):
+def submit_image_analysis(filename, md5_hash, content):
     image = ImageUpload.objects.create(filename=filename, md5_hash=md5_hash)
 
     client = vision.ImageAnnotatorClient(
@@ -14,10 +14,14 @@ def submit_image_analysis(filename, md5_hash, contents):
             "api_key": config("GOOGLE_API_KEY"),
         }
     )
-    request = {
-        "image": {"content": contents},
+    req = {
+        "image": {"content": content},
+        "features": [
+            {"type_": vision.Feature.Type.LABEL_DETECTION},
+            {"type_": vision.Feature.Type.IMAGE_PROPERTIES},
+        ],
     }
 
-    response = client.annotate_image(request)
+    response = client.annotate_image(request=req)
 
     print(response)
