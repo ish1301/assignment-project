@@ -37,6 +37,8 @@ class ImageUploadSerializer(Serializer):
         content = file.file.read()
         md5hash = hashlib.md5(content)
         self.md5_hash = md5hash.hexdigest()
+
+        # Allow async processing of Image API for high performance
         submit_image_analysis.delay(
             filename=file.name, md5_hash=self.md5_hash, content=content
         )
