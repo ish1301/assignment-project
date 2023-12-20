@@ -7,3 +7,4 @@ Pillow==10.1.0
 celery==5.3.6
 django-celery-results==2.5.1
 django-redis==5.4.0
+google-cloud-vision==3.5.0
