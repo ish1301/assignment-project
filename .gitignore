@@ -4,6 +4,7 @@ __pycache__/
 # Environments
 .env
 venv
+*secret.json
 
 # IDE files
 .idea
