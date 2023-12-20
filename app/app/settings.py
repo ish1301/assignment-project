@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "drf_spectacular",
+    "django_celery_results",
     "image_analysis",
 ]
 
@@ -102,6 +103,8 @@ DATABASES = {
         "PORT": 5432,
     }
 }
+
+CELERY_CACHE_BACKEND = "default"
 
 CACHES = {
     "default": {
