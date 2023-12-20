@@ -5,6 +5,12 @@ framework that encourages rapid development and clean, pragmatic design. Built b
 care of much of the hassle of web development, so you can focus on writing your app without needing to reinvent
 the wheel. It’s free and open source.
 
+## Source Code Owner
+
+**Name:** Ish Kumar  
+**Email:** ish1301@gmail.com  
+**Role:** Software Architect (_Full Stack Developer with DevOps chops_)
+
 ## Local Development
 
 This is the initial setup for Image Analysis App .env.example to .env for the application to run. Navigate to the
