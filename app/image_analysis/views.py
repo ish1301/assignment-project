@@ -1,11 +1,10 @@
 from drf_spectacular.utils import extend_schema
+from image_analysis.serializers import ImageUploadSerializer
 from rest_framework.parsers import MultiPartParser
 from rest_framework.response import Response
 from rest_framework.serializers import ValidationError
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
 from rest_framework.views import APIView
-
-from .serializers import ImageUploadSerializer
 
 
 class ImageUploadView(APIView):

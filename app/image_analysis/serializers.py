@@ -1,14 +1,13 @@
 import hashlib
 
+from image_analysis.models import MAX_IMAGE_SIZE
+from image_analysis.tasks import submit_image_analysis
 from rest_framework.serializers import (
     ImageField,
     Serializer,
     SerializerMethodField,
     ValidationError,
 )
-
-from .models import MAX_IMAGE_SIZE
-from .tasks import submit_image_analysis
 
 
 class ImageUploadSerializer(Serializer):

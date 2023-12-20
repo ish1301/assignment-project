@@ -3,8 +3,7 @@ import json
 from celery import shared_task
 from decouple import config
 from google.cloud import vision
-
-from .models import ImageUpload
+from image_analysis.models import ImageUpload
 
 
 @shared_task
