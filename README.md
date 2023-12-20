@@ -19,7 +19,7 @@ project folder and deploy the stack. This command will launch 5 services.
 GitHub Backend Repo: https://github.com/ish1301/edlight-project
 
 ```shell
-# Check all values needs value updated
+# Check all values if they needs to be updated
 cp env.example .env
 docker-compose up -d
 ```
@@ -35,8 +35,6 @@ docker-compose up -d
 ### Django Admin
 
 URL: [http://localhost:8888/admin](http://localhost:8888/admin/)
-
-Credential: Depending upon where you import the initial database
 
 ## Database Migrations
 
