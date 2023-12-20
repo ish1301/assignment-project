@@ -20,9 +20,10 @@ class ImageUploadSerializer(Serializer):
                 f"File size exceeds the allowed limit ({MAX_IMAGE_SIZE} bytes)."
             )
 
-        md5hash = hashlib.md5(file.file.read())
+        content = file.file.read()
+        md5hash = hashlib.md5(content)
         submit_image_analysis.delay(
-            filename=file.name, md5_hash=md5hash.hexdigest(), content=file.file.read()
+            filename=file.name, md5_hash=md5hash.hexdigest(), content=content
         )
 
         return file

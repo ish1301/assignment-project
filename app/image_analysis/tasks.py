@@ -1,3 +1,5 @@
+import json
+
 from celery import shared_task
 from decouple import config
 from google.cloud import vision
@@ -14,14 +16,16 @@ def submit_image_analysis(filename, md5_hash, content):
             "api_key": config("GOOGLE_API_KEY"),
         }
     )
-    req = {
+
+    request = {
         "image": {"content": content},
-        "features": [
-            {"type": vision.Feature.Type.LABEL_DETECTION},
-            {"type": vision.Feature.Type.IMAGE_PROPERTIES},
-        ],
+        "features": [{"type_": vision.Feature.Type.LABEL_DETECTION}],
     }
 
-    response = client.annotate_image(request=req)
+    response = client.annotate_image(request)
+    response_json = vision.AnnotateImageResponse.to_json(response)
 
-    print(response)
+    image.analysis = json.dumps(response_json)
+    image.save()
+
+    return image
