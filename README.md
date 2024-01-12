@@ -17,7 +17,7 @@ wheel. It’s free and open source.
 This is the initial setup for Image Analysis App .env.example to .env for the application to run. Navigate to the
 project folder and deploy the stack. This command will launch 5 services.
 
-GitHub Backend Repo: https://github.com/ish1301/edlight-project
+GitHub Backend Repo: [https://github.com/ish1301/edlight-project](https://github.com/ish1301/assignment-project)
 
 ```shell
 # Check all values if they needs to be updated
